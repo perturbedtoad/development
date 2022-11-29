@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Parmesan",
+    "description": "Crumbly and rough, with salty, nutty, spicy and slightly floral notes.",
+    "price": 7.99,
+    "image": "images/parmesan.jpg",
+    "firmness": "Hard",
+    "milk": "Cow"
+  },
+  {
+    "name": "Pecorino",
+    "description": "Crumbly and firm, with aromatic, pungent flavors and soft spices.",
+    "price": 4.99,
+    "image": "images/pecorino.jpg",
+    "firmness": "Hard",
+    "milk": "Sheep"
+  },
+  {
+    "name": "Gruyere",
+    "description": "Dense and flaky, with sweet, slightly salty, slightly earthy notes.",
+    "price": 2.99,
+    "image": "images/gruyere.jpg",
+    "firmness": "Hard",
+    "milk": "Cow"
+  },
+  {
+    "name": "Cheddar",
+    "description": "Crumbly with sharp, bold flavors and notes of toasted hazelnuts and whiskey.",
+    "price": 2.99,
+    "image": "images/cheddar.jpg",
+    "firmness": "Semi-hard",
+    "milk": "Cow"
+  },
+  {
+    "name": "Gouda",
+    "description": "Smooth and rich, with intense caramel flavor like browned butter and toffee.",
+    "price": 5.99,
+    "image": "images/gouda.jpg",
+    "firmness": "Semi-hard",
+    "milk": "Goat"
+  },
+  {
+    "name": "Munster",
+    "description": "Smooth, soft, and supple, with mild and sweet flavor of roasted nuts.",
+    "price": 4.99,
+    "image": "images/munster.jpg",
+    "firmness": "Semi-soft",
+    "milk": "Cow"
+  },
+  {
+    "name": "Brie",
+    "description": "Silky and creamy, with a light, buttery, slightly salty flavor.",
+    "price": 3.99,
+    "image": "images/brie.jpg",
+    "firmness": "Soft",
+    "milk": "Cow"
+  },
+  {
+    "name": "Camembert",
+    "description": "Velvety, thick, and sticky, with notes of hay, umami, earth and grass.",
+    "price": 4.99,
+    "image": "images/camembert.jpg",
+    "firmness": "Soft",
+    "milk": "Cow"
+  },
+  {
+    "name": "Gorgonzola",
+    "description": "Soft yet crumbly, with competing flavors of buttery and piquant.",
+    "price": 2.99,
+    "image": "images/gorgonzola.jpg",
+    "firmness": "Soft",
+    "milk": "Cow"
+  },
+  {
+    "name": "Feta",
+    "description": "Brittle and grainy, with a tangy, salty, pungent and intense flavor.",
+    "price": 2.99,
+    "image": "images/feta.jpg",
+    "firmness": "Fresh",
+    "milk": "Goat"
+  },
+  {
+    "name": "Ricotta",
+    "description": "Thick, creamy, and spreadable, with a mild, fresh, and slightly sweet flavor.",
+    "price": 1.99,
+    "image": "images/ricotta.jpg",
+    "firmness": "Fresh",
+    "milk": "Sheep"
+  },
+  {
+    "name": "Mozzarella",
+    "description": "Creamy and elastic, with a mild, milky and slightly acidic flavor.",
+    "price": 3.99,
+    "image": "images/mozzarella.jpg",
+    "firmness": "Fresh",
+    "milk": "Cow"
+  }
+]

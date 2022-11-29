@@ -1,38 +1,126 @@
+/* Add styling for your page here */
+
 .App {
-  text-align: center;
+  background-color: blanchedalmond;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App .title {
+  width: 100%;
+  padding-left: 1em;
+  font-size: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App .left {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 65%;
+  padding: 3em;
+  margin: none;
+}
+
+.App .items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+
+.App .cart {
+  margin: none;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 247, 235);
+  width: 26%;
+  border-radius: 2em;
+}
+
+.cartitems {
+  padding-right: 3em;
+  text-align: right;
+}
+
+.cartitems hr {
+  margin-left: 3em;
+  width: 90%;
+}
+
+.App .carttitle {
+  margin: 2em;
+  margin-top: 3em;
+  font-size: 1.5em;
+}
+
+.Cheese {
+  background-color: rgb(255, 247, 235);
+  margin: 1em;
+  border-radius: 2em;
+  box-shadow: 0em 0.5em 1.5em rgb(231, 204, 169);
+  height: 23em;
+  position: relative;
+}
+.Cheese img {
+  width: 100%;
+  border-radius: 2em;
+}
+
+.Cheese h1 {
+  font-size: 1em;
+}
+
+.Cheese h3 {
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.Cheese h2 {
+  font-size: 1em;
+}
+
+.Cheese .info {
+  padding: 1em;
+}
+
+.Cheese button {
+  background-color: rgb(187, 143, 85);
   color: white;
+  font-weight: bold;
+  font-size: 0.7em;
+  padding: 0.8em;
+  border: none;
+  border-radius: 2em;
+  margin-top: 0.8em;
 }
 
-.App-link {
-  color: #61dafb;
+.Cheese .infoDiv {
+  height: 6em;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Cheese .priceButtonDiv {
+  position: absolute;
+  bottom: 1; 
+  width: 100%;
+}
+
+.Cheese .priceButtonDiv::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.Cheese .priceDiv {
+  float: left;
+  width: 50%;
+}
+
+.Cheese .buttonDiv {
+  float: left;
+  width: 50%;
+}
+
+.Cheese button:hover {
+  background-color: rgb(154, 115, 63);
 }
