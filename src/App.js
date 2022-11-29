@@ -163,7 +163,7 @@ function App() {
             {cart.length == 0 ? <p className="cartitem">No items added!</p> : 
               cart.map(item => (
                 <div>
-                  <p className="cartitem">{item.quantity}x {item.name}</p>
+                  <p className="cartitem">{item.quantity}lbs {item.name}</p>
                   <p className="remove" onClick={() => onRemoveItem(item)}>Remove</p>
                 </div>
               ))
