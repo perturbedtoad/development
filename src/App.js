@@ -3,6 +3,7 @@ import { useState } from "react";
 import cheeseData from "./assets/cheese-data.json";
 import Cheese from "./components/Cheese";
 import Checkbox from "./components/Checkbox";
+import SortBy from "./components/SortBy";
 
 /* ####### DO NOT TOUCH -- this makes the image URLs work ####### */
 cheeseData.forEach((item) => {
@@ -17,6 +18,7 @@ function App() {
 
   const [milk, setMilk] = useState(new Array());
   const [firmness, setFirmness] = useState(new Array());
+  const [sort, setSort] = useState("Popular");
 
   const [items, setItems] = useState(cheeseData)
 
@@ -45,13 +47,13 @@ function App() {
 
   //updates list of items matching filters
   const updateItems = () => {
-    console.log("milk: " + milk);
     let filteredMilk = cheeseData.filter(filterItems);
-    console.log("filteredMilk: " + filteredMilk);
     let filteredMilkAndCheese = filteredMilk.filter(filterItems);
+    sortList(sort, filteredMilkAndCheese);
     setItems(filteredMilkAndCheese);
   }
 
+  //determines if an item is valid based on filters
   const filterItems = item => {
     //filter for milk
     //valid if matching any selected milk filters (OR logic)
@@ -87,36 +89,26 @@ function App() {
     return valid; 
   }
 
-  const matchesFilters = (category) => {
-    return function(item) {
-      if (category == "milk") {
-        if (milk.length == 0) { //no filters, all items valid
-          return true;
-        } else {
-          milk.forEach(milkType => { //if matching any milk filter, then valid (OR logic)
-            if (item.milk == milkType) {
-              console.log("found valid");
-              return true;
-            }
-          })
-        }
-        return false;
-      } else {
-        if (firmness.length == 0) { //no filters, all items valid
-          return true;
-        } else {
-          firmness.forEach(firmnessLevel => { //if matching any firmness filter, then valid (OR logic)
-            if (item.firmness == firmnessLevel) {
-              return true;
-            }
-          })
-        }
-        return false;
-      } 
+  //called when sort method is switched
+  const updateSort = (sort) => {
+    setSort(sort);
+    sortList(sort, items);
+    setItems([...items]);
+  }
+
+  const sortList = (sort, list) => {
+    if (sort == "Popular") {
+      list.sort((a, b) => {
+        return a.rank - b.rank;
+      })
+    } else if (sort == "Price") {
+      list.sort((a, b) => {
+        return a.price - b.price;
+      })
     }
   }
 
-  const onClick = (name, price) => {
+  const onAddToCart = (name, price) => {
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].name == name) {
         cart[i].quantity += 1
@@ -130,39 +122,57 @@ function App() {
     setTotal(total + price);
   }
 
+  const onRemoveItem = (item) => {
+    cart.splice(cart.indexOf(item), 1);
+    setCart([...cart]);
+    setTotal(total - (item.quantity*item.price));
+  }
+
   return (
     <div className="App">
       <div className="left">
-        <h1 className="title">Cheesy Dreams Creamery</h1> {/* TODO: personalize your bakery (if you want) */}
+        <p className="title">(Cheesy Dreams Creamery)</p> {/* TODO: personalize your bakery (if you want) */}
         <div className="items">
           {items.map((item, index) => ( // TODO: map cheeseData to Cheese components
             <div className="CheeseDiv"><Cheese name={item.name} image={item.image} 
-            desc={item.description} price={item.price} firmness={item.firmness} milk={item.milk} onAdd={onClick} key={item.name}/></div> // replace with Cheese component      
+            desc={item.description} price={item.price} firmness={item.firmness} milk={item.milk} onAdd={onAddToCart} key={item.name}/></div> // replace with Cheese component      
           ))}
         </div>
       </div>
       
-      <div className="cart">
-        <h1 className="carttitle">Filter</h1>
-        <h3>Firmness</h3>
-        <Checkbox category={"firmness"} filter={"Hard to semi-hard"} onClick={updateFilters}/>
-        <Checkbox category={"firmness"} filter={"Soft to semi-soft"} onClick={updateFilters} />
-        <Checkbox category={"firmness"} filter={"Fresh"} onClick={updateFilters}/>
+      <div className="right">
+        <div className="filters">
+          <h4 id="sortby">Sort By</h4>
+          <SortBy onChange={updateSort} />
 
-        <h3>Milk Type</h3>
-        <Checkbox category={"milk"} filter={"Cow"} onClick={updateFilters}/>
-        <Checkbox category={"milk"} filter={"Goat"} onClick={updateFilters}/>
-        <Checkbox category={"milk"} filter={"Sheep"} onClick={updateFilters}/>
+          <h4 id="filter">Filter</h4>
+          <h5>Firmness</h5>
+          <Checkbox category={"firmness"} filter={"Hard to semi-hard"} onClick={updateFilters}/>
+          <Checkbox category={"firmness"} filter={"Soft to semi-soft"} onClick={updateFilters} />
+          <Checkbox category={"firmness"} filter={"Fresh"} onClick={updateFilters}/>
 
-
-        <h1 className="carttitle">My Cart</h1>
-        <div className="cartitems">
-          {cart.map(item => (
-            <h5>{item.quantity}x {item.name}</h5>
-          ))}
-          <hr/>
-          <h4>Total: ${total.toFixed(2)}</h4>
-        </div>     
+          <h5>Milk Type</h5>
+          <Checkbox category={"milk"} filter={"Cow"} onClick={updateFilters}/>
+          <Checkbox category={"milk"} filter={"Goat"} onClick={updateFilters}/>
+          <Checkbox category={"milk"} filter={"Sheep"} onClick={updateFilters}/>
+        </div>
+        
+        <div className="cart">
+          <h3 className="carttitle">My Cart</h3>
+          <div className="cartitems">
+            {cart.length == 0 ? <p className="cartitem">No items added!</p> : 
+              cart.map(item => (
+                <div>
+                  <p className="cartitem">{item.quantity}x {item.name}</p>
+                  <p className="remove" onClick={() => onRemoveItem(item)}>Remove</p>
+                </div>
+              ))
+            }
+            <hr/>
+            <h4>Total: ${total.toFixed(2)}</h4>
+          </div>     
+        </div>
+        
       </div>
     </div>
   );

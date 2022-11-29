@@ -1,4 +1,8 @@
 /* Add styling for your page here */
+@font-face {
+  font-family: quark;
+  src: url("../public/fonts/Quark_Cheese.otf") format("opentype");
+}
 
 .App {
   background-color: blanchedalmond;
@@ -6,12 +10,15 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .App .title {
+  font-family: quark;
   width: 100%;
-  padding-left: 1em;
-  font-size: 2em;
+  font-size: 6em;
+  margin: 0 0 0.4em 0;
+  color:rgb(108, 58, 33);
 }
 
 .App .left {
@@ -19,7 +26,6 @@
   flex-direction: column;
   width: 65%;
   padding: 3em;
-  margin: none;
 }
 
 .App .items {
@@ -28,42 +34,80 @@
   grid-gap: 8px;
 }
 
-.App .cart {
+.App .right {
   margin: none;
-  display: flex;
-  flex-direction: column;
+  width: 22% ;
+}
+
+.App .filters {
+  /* border: 2px solid rgb(187, 143, 85); */
   background-color: rgb(255, 247, 235);
-  width: 26%;
-  border-radius: 2em;
+  border-radius: 1.5em;
+  margin-top: 4em;
+  padding: 1.5em;
 }
 
-.cartitems {
-  padding-right: 3em;
-  text-align: right;
+.App h4{
+  margin: 0.2em;
 }
 
+.App #filter {
+  margin-top: 1em;
+}
+
+.App h5 {
+  margin: 0.2em;
+  margin-top: 0.8em;
+}
+
+.App label {
+  font-size: smaller;
+}
+
+.cart {
+  border: 2px solid rgb(187, 143, 85);
+  border-radius: 1.5em;
+  padding: 1.5em;
+  margin-top: 2em;
+}
+.carttitle {
+  margin-top: 0;
+}
 .cartitems hr {
-  margin-left: 3em;
-  width: 90%;
+  border-top: 1.5px solid rgb(187, 143, 85);
+  width: 96%;
 }
 
-.App .carttitle {
-  margin: 2em;
-  margin-top: 3em;
-  font-size: 1.5em;
+.App .cartitem {
+  display: inline;
+  font-size: smaller;
+}
+
+.App .remove {
+  display: inline;
+  font-size:x-small;
+  margin-left: 0.5em;
+  color: rgb(187, 143, 85);
+  cursor:default;
+}
+
+.App .remove:hover {
+  text-decoration: underline;
+  cursor:default;
 }
 
 .Cheese {
   background-color: rgb(255, 247, 235);
   margin: 1em;
-  border-radius: 2em;
-  box-shadow: 0em 0.5em 1.5em rgb(231, 204, 169);
-  height: 23em;
+  border-radius: 1em;
+  box-shadow: 0em 0.3em 1em rgb(231, 204, 169);
+  /* height: 24em; */
   position: relative;
+  height: fit-content;
 }
 .Cheese img {
   width: 100%;
-  border-radius: 2em;
+  border-radius: 1em;
 }
 
 .Cheese h1 {
@@ -83,6 +127,10 @@
   padding: 1em;
 }
 
+.Cheese .stats {
+  margin: 0;
+}
+
 .Cheese button {
   background-color: rgb(187, 143, 85);
   color: white;
@@ -95,13 +143,12 @@
 }
 
 .Cheese .infoDiv {
-  height: 6em;
-
+  height: 7.5em;
 }
 
 .Cheese .priceButtonDiv {
-  position: absolute;
-  bottom: 1; 
+  /* position: absolute;
+  bottom: 1;  */
   width: 100%;
 }
 
@@ -117,7 +164,7 @@
 }
 
 .Cheese .buttonDiv {
-  float: left;
+  float: right;
   width: 50%;
 }
 
